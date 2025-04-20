@@ -1,0 +1,21 @@
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/Flow.schema.json
+
+inputs:
+  name:
+    type: string
+
+outputs:
+  result:
+    type: string
+    reference: ${hello.output}
+
+nodes:
+  - name: hello
+    type: python
+    source:
+      type: inline
+      code: |
+        def main(name):
+            return f"Hello, {name}!"
+    inputs:
+      name: ${inputs.name}
