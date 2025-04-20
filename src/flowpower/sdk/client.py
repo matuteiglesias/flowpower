@@ -4,7 +4,7 @@ from flowpower.config import _DEFAULTS
 from flowpower.logger import logger, log_run
 from flowpower.sdk.run_config import build_run_config
 from flowpower.sdk.flow_inspect import is_streamable_flow, describe_flow
-from flowpower.engine.executor import run_streaming, exec_node
+from flowpower.engine.executor import run_flow_streaming
 
 from flowpower.config import Config
 
@@ -41,7 +41,7 @@ class FlowpowerClient:
             )
 
             if stream or is_streamable_flow(flow):
-                return run_streaming(flow, data, run_config)
+                return run_flow_streaming(flow, data, run_config)
             return self._pf.run(**run_config)
 
     def exec_node(self, flow: str, node_name: str, inputs: dict):
@@ -56,7 +56,7 @@ class FlowpowerClient:
         Retrieve trace info for a given run ID.
         """
         logger.info(f"🔍 Retrieving trace for run ID: {run_id}")
-        return self._pf.traces.get(run_id)
+        return self._pf.runs.get(run_id)
 
     def describe(self, flow: str) -> dict:
         """
