@@ -5,3 +5,21 @@ __pycache__/
 dist/
 build/
 .vscode/
+
+# PromptFlow local runs and logs
+.promptflow/
+__pycache__/
+.env
+*.log
+*.pyc
+*.pkl
+*.tmp
+*.bak
+*.db
+*.sqlite3
+*.egg-info/
+dist/
+build/
+.cache/
+coverage/
+.mypy_cache/
