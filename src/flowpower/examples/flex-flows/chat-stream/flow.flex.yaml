@@ -1,0 +1,18 @@
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/Flow.schema.json
+
+entry: flow:ChatFlow
+
+sample: 
+  inputs:
+    question: What's Azure Machine Learning?
+    chat_history: []
+
+
+  init:
+    model_config:
+      connection: open_ai_connection
+      model: gpt-3.5-turbo
+
+
+environment:
+  python_requirements_txt: requirements.txt
